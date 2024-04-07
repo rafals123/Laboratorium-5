@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratorium 5</title>
+</head>
+<body>
+    <h1>Strona na serwerze Nginx!</h1>
+    <div id="response"></div>
+    <script>
+         fetch('app.js')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Błędna odpowiedź');
+                }
+                return response.text();
+            })
+            .then(data => {
+                document.getElementById('response').innerHTML = data;
+            })
+            .catch(error => {
+                console.error('Wystąpił błąd:', error);
+            });
+    </script>
+</body>
+</html>
